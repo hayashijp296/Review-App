@@ -27,3 +27,11 @@ npm install dotenv
 ```
 
 # 20 Create Mongoose Models
+
+# 24 Hashing password
+
+- use bcrypt to hash password
+
+```sh
+npm i bcrypt
+```
