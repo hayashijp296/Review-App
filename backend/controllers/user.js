@@ -12,5 +12,6 @@ exports.create = async (req, res) => {
   /* Creating a new user and saving it to the database. */
   const newUser = new User({ name, email, password });
   await newUser.save();
+
   res.status(201).json({ user: newUser });
 };

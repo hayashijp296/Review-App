@@ -45,3 +45,9 @@ npm i bcrypt
 ```sh
 npm install --save express-validator
 ```
+
+# 29 Setup mailtrap and create Veritification Schema
+
+```sh
+npm i nodemailer
+```
