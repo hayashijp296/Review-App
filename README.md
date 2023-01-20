@@ -35,3 +35,5 @@ npm install dotenv
 ```sh
 npm i bcrypt
 ```
+
+# 26 Prevent duplicate email registering
