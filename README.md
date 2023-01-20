@@ -37,3 +37,11 @@ npm i bcrypt
 ```
 
 # 26 Prevent duplicate email registering
+
+# 27 Express Validator (very interesting)
+
+- install express validator
+
+```sh
+npm install --save express-validator
+```
