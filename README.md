@@ -15,3 +15,13 @@ npm install express
 ```sh
 npm i nodemon -D
 ```
+
+# 19 install mongoDB
+
+```sh
+npm i mongoose
+```
+
+```sh
+npm install dotenv
+```
