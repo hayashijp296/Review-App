@@ -17,6 +17,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  isVerified: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 /* This is a middleware that runs before the user is saved to the database. It checks if the password

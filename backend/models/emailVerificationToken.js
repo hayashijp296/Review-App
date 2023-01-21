@@ -11,7 +11,7 @@ const emailVerificationTokenSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  createAt: {
+  createdAt: {
     type: Date,
     expires: 3600,
     default: Date.now(),
@@ -24,6 +24,11 @@ emailVerificationTokenSchema.pre('save', async function (next) {
   }
   next();
 });
+
+emailVerificationTokenSchema.methods.compareToken = async function (token) {
+  const result = await bcrypt.compare(token, this.token);
+  return result;
+};
 
 module.exports = mongoose.model(
   'EmailVerificationToken',
