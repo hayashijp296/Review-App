@@ -57,3 +57,15 @@ npm i nodemailer
 # 38 Sending password reset link
 
 # 39 Create middleware to check reset password token
+
+# 41 User sign-in
+
+- install jsonwebtoken
+
+```sh
+npm i jsonwebtoken
+```
+
+```sh
+npm i morgan
+```

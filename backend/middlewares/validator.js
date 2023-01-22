@@ -12,6 +12,14 @@ exports.userValidator = [
     .withMessage('Password must be 8 to 20 characters long'),
 ];
 
+exports.validate = (req, res, next) => {
+  const error = validationResult(req).array();
+  if (error.length) {
+    return res.json({ error: error[0].msg });
+  }
+  next();
+};
+
 exports.validatePassword = [
   check('newPassword')
     .trim()
@@ -22,12 +30,7 @@ exports.validatePassword = [
     .withMessage('Password must be 8 to 20 characters long'),
 ];
 
-/* A middleware function that is used to validate the request body. */
-exports.validate = (req, res, next) => {
-  const error = validationResult(req).array();
-  if (error.length) {
-    return res.json({ error: error[0].msg });
-  }
-  console.log(error);
-  next();
-};
+exports.signInValidator = [
+  check('email').normalizeEmail().isEmail().withMessage('Email is invalid'),
+  check('password').trim().not().isEmpty().withMessage('Password is missing!'),
+];

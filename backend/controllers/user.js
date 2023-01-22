@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
 const EmailVerificationToken = require('../models/emailVerificationToken');
 const PasswordResetToken = require('../models/passwordResetToken');
 const { isValidObjectId } = require('mongoose');
@@ -47,7 +48,7 @@ exports.create = async (req, res) => {
 exports.verifyEmail = async (req, res) => {
   const { userId, OTP } = req.body;
 
-  if (!isValidObjectId(userId)) return res.json({ error: 'Invalid user!' });
+  if (!isValidObjectId(userId)) return sendError(res, 'Invalid user');
   const user = await User.findById(userId);
   if (!user) return sendError(res, 'user not found!', 404);
   if (user.isVerified) return sendError(res, 'user is already verified!');
@@ -130,7 +131,7 @@ exports.forgetPassword = async (req, res) => {
   });
   await newPasswordResetToken.save();
 
-  const resetPasswordUrl = `https://localhost:3000/reset-password?token=${token}&id=${user._id}`;
+  const resetPasswordUrl = `http://localhost:3000/reset-password?token=${token}&id=${user._id}`;
 
   const transport = generateMailTransporter();
   transport.sendMail({
@@ -175,4 +176,15 @@ exports.resetPassword = async (req, res) => {
   res.json({
     message: 'Password reset successfully, now you can use new password',
   });
+};
+
+exports.signIn = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) return sendError(res, 'Email/Password mismatch!');
+  const matched = await user.comparePassword(password);
+  if (!matched) return sendError(res, 'Password mismatch!');
+  const { _id, name } = user;
+  const jwtToken = jwt.sign({ userId: _id }, process.env.JWT_SECRET);
+  res.json({ user: { id: _id, name, email, token: jwtToken } });
 };
