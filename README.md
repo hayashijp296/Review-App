@@ -51,3 +51,5 @@ npm install --save express-validator
 ```sh
 npm i nodemailer
 ```
+
+# 36 Model for password
