@@ -55,3 +55,5 @@ npm i nodemailer
 # 36 Model for password
 
 # 38 Sending password reset link
+
+# 39 Create middleware to check reset password token
