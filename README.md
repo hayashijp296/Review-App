@@ -71,3 +71,7 @@ npm i morgan
 ```
 
 # 43 async await error
+
+```sh
+npm i express-async-errors
+```
