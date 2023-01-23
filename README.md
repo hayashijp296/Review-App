@@ -69,3 +69,5 @@ npm i jsonwebtoken
 ```sh
 npm i morgan
 ```
+
+# 43 async await error
