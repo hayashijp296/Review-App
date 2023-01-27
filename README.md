@@ -75,3 +75,16 @@ npm i morgan
 ```sh
 npm i express-async-errors
 ```
+
+# 46 install tailwind css in frontend
+
+```sh
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+- add './src/\*_/_.{js,jsx}' in to tailwind.config.js
+- add into index.css
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
