@@ -88,3 +88,11 @@ npx tailwindcss init
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
+
+# 46 Create navbar and user react-icon
+
+- install react-icon in frontend
+
+```sh
+npm install react-icons --save
+```
