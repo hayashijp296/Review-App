@@ -118,3 +118,5 @@ npm i react-router-dom@6
 # 62 Create password form
 
 # Fix bug hidden icon when move another routes
+
+# Finalizing Theme
