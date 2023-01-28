@@ -1,12 +1,15 @@
 import React from 'react';
 import { BsFillSunFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 import Container from '../Container';
 export default function Navbar() {
   return (
     <div className="bg-secondary shadow-sm shadow-gray-500">
       <Container className="p-2">
         <div className="flex justify-between items-center">
-          <img src="./logo.png" alt="" className="h-10" />
+          <Link to="/">
+            <img src="./logo.png" alt="" className="h-10" />
+          </Link>
           <ul className="flex items-center space-x-4">
             <li>
               <button className="bg-dark-subtle p-1 rounded">
@@ -20,7 +23,11 @@ export default function Navbar() {
                 placeholder="search..."
               />
             </li>
-            <li className="text-white font-semibold">Login</li>
+            <li>
+              <Link className="text-white font-semibold" to="/auth/signin">
+                Login{' '}
+              </Link>
+            </li>
           </ul>
         </div>
       </Container>
