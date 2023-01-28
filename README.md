@@ -120,3 +120,5 @@ npm i react-router-dom@6
 # Fix bug hidden icon when move another routes
 
 # Finalizing Theme
+
+# Fix response of backend and install axios in frontend
