@@ -102,3 +102,11 @@ npm install react-icons --save
 # 50 Refactoring signin form
 
 # 51 Final singin form
+
+# 53 Setup react-router-dom
+
+-install react-router-dom
+
+```sh
+npm i react-router-dom@6
+```
