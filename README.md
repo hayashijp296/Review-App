@@ -122,3 +122,7 @@ npm i react-router-dom@6
 # Finalizing Theme
 
 # Fix response of backend and install axios in frontend
+
+```sh
+npm install axios
+```
