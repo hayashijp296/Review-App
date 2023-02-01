@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { commonModalClass } from '../../utils/theme';
 import Container from '../Container';
 import FormContainer from '../form/FormContainer';
@@ -14,6 +15,9 @@ export default function EmailVerification() {
 
   const inputRef = useRef();
 
+  const { state } = useLocation();
+  const user = state?.user;
+  const navigate = useNavigate();
   const focusNextInputField = (index) => {
     setActiveOtpIndex(index + 1);
   };
@@ -42,14 +46,23 @@ export default function EmailVerification() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // submit otp
+  };
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [activeOtpIndex]);
 
+  useEffect(() => {
+    if (!user) navigate('/not-found');
+  }, [user]);
+
   return (
     <FormContainer>
       <Container>
-        <form className={commonModalClass}>
+        <form onSubmit={handleSubmit} className={commonModalClass}>
           <div>
             <Title>Please enter the OTP to verify your account</Title>
             <p className="text-center dark:text-dark-subtle text-light-subtle">
