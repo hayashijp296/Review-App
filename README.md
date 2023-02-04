@@ -132,3 +132,5 @@ npm install axios
 # 80 Verify User email with OTP
 
 # 82 Create Notification context
+
+# 83 Update response of Email Verification
