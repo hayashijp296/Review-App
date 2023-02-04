@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../api/auth';
+import { useNotification } from '../../hooks';
 import { commonModalClass } from '../../utils/theme';
 import Container from '../Container';
 import CustomLink from '../CustomLink';
@@ -24,6 +25,7 @@ const validateUserInfo = ({ name, email, password }) => {
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { updateNotifications } = useNotification();
   const [userInfo, setUserInfo] = useState({
     name: '',
     email: '',
@@ -37,7 +39,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { ok, error } = validateUserInfo(userInfo);
-    if (!ok) return console.log(error);
+    if (!ok) return updateNotifications('error', error);
     const response = await createUser(userInfo);
     if (response.error) return console.log(response.error);
     navigate('/auth/verification', {
