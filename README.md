@@ -144,3 +144,5 @@ npm install axios
 # 93 Method for Forget password and handling form
 
 # 94 Reading Query Parameters
+
+# 97 Valid token resend password
