@@ -37,8 +37,8 @@ export default function AuthProvider({ children }) {
 
     setAuthInfo({
       profile: { ...user },
-      isPending: false,
       isLoggedIn: true,
+      isPending: false,
       error: '',
     });
   };
@@ -53,7 +53,7 @@ export default function AuthProvider({ children }) {
   }, []);
   return (
     <AuthContext.Provider
-      value={{ authInfo, handleLogin, isAuth, handleLogout }}
+      value={{ authInfo, handleLogin, handleLogout, isAuth }}
     >
       {children}
     </AuthContext.Provider>
