@@ -138,3 +138,5 @@ npm install axios
 # 86 Create Login Info Provider
 
 # 88 Making request to is-auth
+
+# 90 Redirect if user logged in

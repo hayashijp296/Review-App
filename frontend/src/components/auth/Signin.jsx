@@ -1,5 +1,7 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth, useNotification } from '../../hooks';
 import { commonModalClass } from '../../utils/theme';
 import Container from '../Container';
@@ -25,11 +27,10 @@ export default function Signin() {
     email: '',
     password: '',
   });
-
+  const navigate = useNavigate();
   const { updateNotifications } = useNotification();
   const { handleLogin, authInfo } = useAuth();
-  const { isPending } = authInfo;
-  console.log(authInfo);
+  const { isPending, isLoggedIn } = authInfo;
 
   const handleChange = ({ target }) => {
     const { value, name } = target;
@@ -42,6 +43,10 @@ export default function Signin() {
     if (!ok) return updateNotifications('error', error);
     handleLogin(userInfo.email, userInfo.password);
   };
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+  }, [isLoggedIn]);
 
   return (
     <FormContainer>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../../api/auth';
-import { useNotification } from '../../hooks';
+import { useNotification, useAuth } from '../../hooks';
 import { commonModalClass } from '../../utils/theme';
 import Container from '../Container';
 import CustomLink from '../CustomLink';
@@ -25,6 +25,8 @@ const validateUserInfo = ({ name, email, password }) => {
 
 export default function Signup() {
   const navigate = useNavigate();
+  const { authInfo } = useAuth();
+  const { isLoggedIn } = authInfo;
   const { updateNotifications } = useNotification();
   const [userInfo, setUserInfo] = useState({
     name: '',
@@ -47,6 +49,10 @@ export default function Signup() {
       replace: true,
     });
   };
+
+  useEffect(() => {
+    if (isLoggedIn) navigate('/');
+  }, [isLoggedIn, navigate]);
 
   const { name, email, password } = userInfo;
   return (
