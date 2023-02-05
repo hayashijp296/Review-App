@@ -152,3 +152,5 @@ npm install axios
 # 99 Resetting New Password
 
 # 102 Create link to user can auth account
+
+# 105 Refactoring resend email verification

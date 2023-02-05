@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { verifyUserEmail } from '../../api/auth';
+import { resendEmailVerificationToken, verifyUserEmail } from '../../api/auth';
 import { useAuth, useNotification } from '../../hooks';
 import { commonModalClass } from '../../utils/theme';
 import Container from '../Container';
@@ -53,6 +53,12 @@ export default function EmailVerification() {
     setOtp([...newOtp]);
   };
 
+  const handleOTPResend = async () => {
+    const { error, message } = await resendEmailVerificationToken(user.id);
+    if (error) return updateNotifications('error', error);
+    updateNotifications('success', message);
+  };
+
   const handleKeyDown = ({ key }, index) => {
     currentOTPIndex = index;
     if (key === 'Backspace') {
@@ -86,7 +92,7 @@ export default function EmailVerification() {
   useEffect(() => {
     if (!user) navigate('/not-found');
     if (isLoggedIn && isVerified) navigate('/');
-  }, [user, isLoggedIn]);
+  }, [user, isLoggedIn, isVerified]);
 
   return (
     <FormContainer>
@@ -114,8 +120,16 @@ export default function EmailVerification() {
               );
             })}
           </div>
-
-          <Submit value="Verify Account" />
+          <div>
+            <Submit value="Verify Account" />
+            <button
+              onClick={handleOTPResend}
+              type="button"
+              className="dark:text-white text-blue-500 font-semibold hover:underline mt-2"
+            >
+              I don't have OTP
+            </button>
+          </div>
         </form>
       </Container>
     </FormContainer>
