@@ -148,3 +148,5 @@ npm install axios
 # 97 Valid token resend password
 
 # 98 Validating New Password
+
+# 99 Resetting New Password

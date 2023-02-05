@@ -7,7 +7,7 @@ import Title from '../form/Title';
 import FormContainer from '../form/FormContainer';
 import { commonModalClass } from '../../utils/theme';
 import { ImSpinner3 } from 'react-icons/im';
-import { verifyPasswordResetToken } from '../../api/auth';
+import { resetPassword, verifyPasswordResetToken } from '../../api/auth';
 import { useNotification } from '../../hooks';
 import { useEffect } from 'react';
 export default function ConfirmPassword() {
@@ -45,7 +45,7 @@ export default function ConfirmPassword() {
     const { name, value } = target;
     setPassword({ ...password, [name]: value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!password.one.trim())
       return updateNotifications('error', 'Password is missing');
@@ -57,6 +57,16 @@ export default function ConfirmPassword() {
       );
     if (password.one !== password.two)
       return updateNotifications('error', 'Password do not match!');
+    const { error, message } = await resetPassword({
+      newPassword: password.one,
+      userId: id,
+      token,
+    });
+    if (error) {
+      return updateNotifications('error', error);
+    }
+    updateNotifications('success', message);
+    navigate('/auth/signin', { replace: true });
   };
 
   if (isVerifying)
