@@ -142,3 +142,5 @@ npm install axios
 # 90 Redirect if user logged in
 
 # 93 Method for Forget password and handling form
+
+# 94 Reading Query Parameters
