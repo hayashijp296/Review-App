@@ -140,3 +140,5 @@ npm install axios
 # 88 Making request to is-auth
 
 # 90 Redirect if user logged in
+
+# 93 Method for Forget password and handling form
