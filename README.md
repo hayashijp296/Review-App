@@ -146,3 +146,5 @@ npm install axios
 # 94 Reading Query Parameters
 
 # 97 Valid token resend password
+
+# 98 Validating New Password

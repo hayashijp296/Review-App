@@ -11,6 +11,10 @@ import { verifyPasswordResetToken } from '../../api/auth';
 import { useNotification } from '../../hooks';
 import { useEffect } from 'react';
 export default function ConfirmPassword() {
+  const [password, setPassword] = useState({
+    one: '',
+    two: '',
+  });
   const [isVerifying, setIsVerifying] = useState(true);
   const [isValid, setIsValid] = useState(false);
   const [searchParams] = useSearchParams();
@@ -37,6 +41,24 @@ export default function ConfirmPassword() {
 
     setIsValid(true);
   };
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setPassword({ ...password, [name]: value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!password.one.trim())
+      return updateNotifications('error', 'Password is missing');
+
+    if (password.one.trim().length < 8)
+      return updateNotifications(
+        'error',
+        'Password must be at least 8 characters'
+      );
+    if (password.one !== password.two)
+      return updateNotifications('error', 'Password do not match!');
+  };
+
   if (isVerifying)
     return (
       <FormContainer>
@@ -65,18 +87,22 @@ export default function ConfirmPassword() {
   return (
     <FormContainer>
       <Container>
-        <form className={commonModalClass + ' w-96'}>
+        <form onSubmit={handleSubmit} className={commonModalClass + ' w-96'}>
           <Title>Enter New Password</Title>
           <FormInput
+            value={password.one}
+            onChange={handleChange}
             label="New Password"
             placeholder="********"
-            name="password"
+            name="one"
             type="password"
           />
           <FormInput
+            value={password.two}
+            onChange={handleChange}
             label="Confirm Password"
             placeholder="********"
-            name="confirmPassword"
+            name="two"
             type="password"
           />
           <Submit value="Confirm Password" />
