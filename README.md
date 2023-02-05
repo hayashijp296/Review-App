@@ -134,3 +134,5 @@ npm install axios
 # 82 Create Notification context
 
 # 83 Update response of Email Verification
+
+# 86 Create Login Info Provider
