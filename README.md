@@ -136,3 +136,5 @@ npm install axios
 # 83 Update response of Email Verification
 
 # 86 Create Login Info Provider
+
+# 88 Making request to is-auth
