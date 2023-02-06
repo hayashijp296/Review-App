@@ -154,3 +154,5 @@ npm install axios
 # 102 Create link to user can auth account
 
 # 105 Refactoring resend email verification
+
+# 106 Create Actor Schema
