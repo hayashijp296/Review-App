@@ -156,3 +156,9 @@ npm install axios
 # 105 Refactoring resend email verification
 
 # 106 Create Actor Schema
+
+# 107 Install Multer in backend to handle file (form data)
+
+```sh
+npm i multer
+```
