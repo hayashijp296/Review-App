@@ -176,3 +176,5 @@ npm install cloudinary
 - configure cloudinary
 
 # 112 Upload image to cloudinary
+
+# 113 Update actor
