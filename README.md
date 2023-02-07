@@ -164,3 +164,13 @@ npm i multer
 ```
 
 # 110 Create middleware validate actor
+
+# 110_1 configuring cloudinary
+
+- install cloudinary
+
+```sh
+npm install cloudinary
+```
+
+- configure cloudinary
