@@ -180,3 +180,5 @@ npm install cloudinary
 # 113 Update actor
 
 # 114 Crop picture to 500 X 500
+
+# 115 Delete actor
