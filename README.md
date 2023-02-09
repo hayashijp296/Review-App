@@ -186,3 +186,5 @@ npm install cloudinary
 # 116 Search actor
 
 # 119 Refactoring actor controller
+
+# 122 Role Base Authentication

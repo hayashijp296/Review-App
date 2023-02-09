@@ -22,6 +22,12 @@ const userSchema = mongoose.Schema({
     required: true,
     default: false,
   },
+  role: {
+    type: String,
+    required: true,
+    default: 'user',
+    enum: ['admin', 'user'],
+  },
 });
 
 /* This is a middleware that runs before the user is saved to the database. It checks if the password

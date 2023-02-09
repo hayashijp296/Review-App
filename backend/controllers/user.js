@@ -198,7 +198,9 @@ exports.signIn = async (req, res) => {
   if (!user) return sendError(res, 'Email/Password mismatch!');
   const matched = await user.comparePassword(password);
   if (!matched) return sendError(res, 'Password mismatch!');
-  const { _id, name, isVerified } = user;
+  const { _id, name, role, isVerified } = user;
   const jwtToken = jwt.sign({ userId: _id }, process.env.JWT_SECRET);
-  res.json({ user: { id: _id, name, email, token: jwtToken, isVerified } });
+  res.json({
+    user: { id: _id, name, email, role, token: jwtToken, isVerified },
+  });
 };
