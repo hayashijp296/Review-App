@@ -34,6 +34,6 @@ router.post(
 
 router.delete('/:actorId', isAuth, isAdmin, removeActor);
 router.get('/search', isAuth, isAdmin, searchActor);
-router.get('/latest-upload', isAuth, isAdmin, getLatestActors);
+router.get('/latest-upload', getLatestActors);
 router.get('/single/:id', getSingleActor);
 module.exports = router;

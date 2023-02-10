@@ -64,7 +64,7 @@ const movieSchema = mongoose.Schema(
       public_id: { type: String, required: true },
       required: true,
     },
-    reviews: [{ tpye: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
+    reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
     language: {
       type: String,
       required: true,
