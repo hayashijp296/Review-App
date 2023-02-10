@@ -188,3 +188,5 @@ npm install cloudinary
 # 119 Refactoring actor controller
 
 # 122 Role Base Authentication
+
+# 123 Create movie schema
