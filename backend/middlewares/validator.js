@@ -1,6 +1,6 @@
 const { check, validationResult } = require('express-validator');
-const genres = require('../utils/genres');
 const { isValidObjectId } = require('mongoose');
+const genres = require('../utils/genres');
 /* An array of validators. */
 exports.userValidator = [
   check('name').trim().not().isEmpty().withMessage('Name is missing!'),
@@ -14,10 +14,33 @@ exports.userValidator = [
     .withMessage('Password must be 8 to 20 characters long'),
 ];
 
+exports.validatePassword = [
+  check('newPassword')
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage('Password is missing!')
+    .isLength({ min: 8, max: 20 })
+    .withMessage('Password must be 8 to 20 characters long'),
+];
+
+exports.signInValidator = [
+  check('email').normalizeEmail().isEmail().withMessage('Email is invalid'),
+  check('password').trim().not().isEmpty().withMessage('Password is missing!'),
+];
+
 exports.actorInfoValidator = [
   check('name').trim().not().isEmpty().withMessage('Actor name is missing!'),
-  check('about').trim().not().isEmpty().withMessage('About is missing!'),
-  check('gender').trim().not().isEmpty().withMessage('Gender is missing!'),
+  check('about')
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage('About is a required field!'),
+  check('gender')
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage('Gender is a required field!'),
 ];
 
 exports.validateMovie = [
@@ -28,7 +51,7 @@ exports.validateMovie = [
     .isEmpty()
     .withMessage('Storyline is important!'),
   check('language').trim().not().isEmpty().withMessage('Language is missing!'),
-  check('releseDate').isDate().withMessage('Relese date is missing!'),
+  check('releaseDate').isDate().withMessage('Release date is missing!'),
   check('status')
     .isIn(['public', 'private'])
     .withMessage('Movie status must be public or private!'),
@@ -64,8 +87,8 @@ exports.validateMovie = [
           throw Error(
             'Only accepted boolean value inside leadActor inside cast!'
           );
-        return true;
       }
+      return true;
     }),
   check('trailer')
     .isObject()
@@ -87,10 +110,10 @@ exports.validateMovie = [
         throw Error('Trailer url is invalid!');
       }
     }),
-  check('poster').custom((_, { req }) => {
-    if (!req.file) throw Error('Poster file is missing!');
-    return true;
-  }),
+  // check('poster').custom((_, { req }) => {
+  //   if (!req.file) throw Error('Poster file is missing!');
+  //   return true;
+  // }),
 ];
 
 exports.validate = (req, res, next) => {
@@ -100,18 +123,3 @@ exports.validate = (req, res, next) => {
   }
   next();
 };
-
-exports.validatePassword = [
-  check('newPassword')
-    .trim()
-    .not()
-    .isEmpty()
-    .withMessage('Password is missing!')
-    .isLength({ min: 8, max: 20 })
-    .withMessage('Password must be 8 to 20 characters long'),
-];
-
-exports.signInValidator = [
-  check('email').normalizeEmail().isEmail().withMessage('Email is invalid'),
-  check('password').trim().not().isEmpty().withMessage('Password is missing!'),
-];

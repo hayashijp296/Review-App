@@ -194,3 +194,5 @@ npm install cloudinary
 # 126 Implement upload video
 
 # 135 Storing Multiple Thumbnails
+
+# 139 Update, delete movie
