@@ -192,3 +192,5 @@ npm install cloudinary
 # 123 Create movie schema
 
 # 126 Implement upload video
+
+# 135 Storing Multiple Thumbnails
