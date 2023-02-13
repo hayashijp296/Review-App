@@ -200,3 +200,5 @@ npm install cloudinary
 # 140 Send user role from backend
 
 # 145 Create navbar for admin
+
+# 147 Create logout button
