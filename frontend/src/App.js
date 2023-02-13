@@ -8,7 +8,10 @@ import ForgetPassword from './components/auth/ForgetPassword';
 import ConfirmPassword from './components/auth/ConfirmPassword';
 import Home from './components/Home';
 import Navbar from './components/user/Navbar';
+import { useAuth } from './hooks';
 export default function App() {
+  const { authInfo } = useAuth();
+  console.log(authInfo);
   return (
     <>
       <Navbar />

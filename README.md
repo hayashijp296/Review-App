@@ -196,3 +196,5 @@ npm install cloudinary
 # 135 Storing Multiple Thumbnails
 
 # 139 Update, delete movie
+
+# 140 Send user role from backend
