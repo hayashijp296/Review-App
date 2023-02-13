@@ -9,8 +9,11 @@ import ConfirmPassword from './components/auth/ConfirmPassword';
 import Home from './components/Home';
 import Navbar from './components/user/Navbar';
 import { useAuth } from './hooks';
+import AdminNavigator from './navigator/AdminNavigator';
 export default function App() {
   const { authInfo } = useAuth();
+  const isAdmin = authInfo.profile?.role === 'admin';
+  if (isAdmin) return <AdminNavigator />;
   console.log(authInfo);
   return (
     <>
