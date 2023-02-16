@@ -204,3 +204,5 @@ npm install cloudinary
 # 147 Create logout button
 
 # 150 View navbar anywhere and create search bar, sear icon
+
+# 160 Create admin dashboard
